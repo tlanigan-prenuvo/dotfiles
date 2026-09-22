@@ -1,3 +1,4 @@
+onboarding = false
 [keys]
 prefix = "ctrl+b"
 focus_pane_left  = "prefix+h"
@@ -11,7 +12,14 @@ close_tab = "prefix+ampersand"
 workspace_picker = "prefix+w"
 goto             = "prefix+g"
 copy_mode  = "prefix+y"  # herdr's copy-mode entry key; copy-mode's own internal keys (v/space select, y/Enter copy, q/Esc cancel) aren't configurable
+# Moved off the default "prefix+b": with prefix = ctrl+b, a stuttered prefix
+# collapses the sidebar by accident.
+toggle_sidebar = "prefix+shift+b"
 
 [ui]
 # Agents panel order: explicit choice of "spaces" (grouped by space, the default) over "priority".
 agent_panel_sort = "spaces"
+
+# Collapse to zero width rather than the compact status rail, so a collapsed
+# sidebar is unmistakable instead of looking like tiny agent icons.
+sidebar_collapsed_mode = "hidden"
