@@ -25,6 +25,16 @@
     finder.CreateDesktop = true;           # keep icons on the Desktop
     trackpad.Clicking = false;             # tap-to-click off; press to click
   };
+  # OpenSuperWhisper has no built-in "launch at login" toggle, so start it here.
+  # `open -a` (rather than the inner binary) launches it through LaunchServices,
+  # which keeps its Accessibility/Microphone grants attached to the app bundle.
+  launchd.user.agents.opensuperwhisper = {
+    serviceConfig = {
+      ProgramArguments = [ "/usr/bin/open" "-a" "/Applications/OpenSuperWhisper.app" ];
+      RunAtLoad = true;
+    };
+  };
+
   nix-homebrew = {
     enable = true;
     inherit user;
@@ -69,6 +79,7 @@
     casks = [
       "wezterm"
       "claude-code"
+      "opensuperwhisper"
       "font-meslo-lg-nerd-font"
       "spacelift-io/spacelift/spacectl"
     ];
