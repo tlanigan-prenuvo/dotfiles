@@ -9,8 +9,23 @@ echo "==> Step 1: Determinate Nix"
 if command -v nix >/dev/null 2>&1; then
   echo "    nix already installed, skipping"
 else
-  curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix \
-    | sh -s -- install --no-confirm
+  install_nix() {
+    curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix \
+      | sh -s -- install --no-confirm "$@"
+  }
+  # Corporate TLS inspection (here: Aikido Endpoint Protection) re-signs some
+  # HTTPS traffic, including github.com, where Nix fetches this flake's inputs.
+  # Nix ignores the macOS keychain and reads ssl-cert-file from its own config,
+  # so hand the shell's CA bundle to the installer: it uses it for its downloads
+  # and writes ssl-cert-file into the Nix config, which also covers the root
+  # nix-daemon and the sudo'd darwin-rebuild below (both run without your env).
+  # On machines without SSL_CERT_FILE this is a no-op.
+  if [ -n "${SSL_CERT_FILE:-}" ] && [ -r "$SSL_CERT_FILE" ]; then
+    echo "    using CA bundle from SSL_CERT_FILE: $SSL_CERT_FILE"
+    install_nix --ssl-cert-file "$SSL_CERT_FILE"
+  else
+    install_nix
+  fi
   # shellcheck disable=SC1091
   . /nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh
 fi
