@@ -63,6 +63,11 @@ in
   home.file.".claude/settings.json".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/settings.json";
 
+  # Only the one skill directory, not all of .claude/skills - Claude Code owns
+  # .claude/skills/synced and home-manager must not clobber it.
+  home.file.".claude/skills/keys".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/skills/keys";
+
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
   home.file.".codex/AGENTS.md".source =
