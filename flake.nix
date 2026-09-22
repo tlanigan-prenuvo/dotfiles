@@ -30,6 +30,9 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            # Existing dotfiles that Home Manager wants to own (e.g. ~/.zshrc)
+            # are renamed with this suffix instead of aborting the switch.
+            home-manager.backupFileExtension = "bak";
             home-manager.extraSpecialArgs = { inherit user; };
             home-manager.users.${user} = import ./home.nix;
           }
