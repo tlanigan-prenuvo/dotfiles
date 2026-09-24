@@ -1,6 +1,6 @@
 ---
 name: keys
-description: Keyboard cheatsheet for this machine - herdr panes and tabs inside WezTerm, and scrolling in Claude Code. Use when asked how to split, switch panes or tabs, or scroll without a mouse.
+description: Keyboard cheatsheet for this machine - herdr panes, tabs and detaching inside WezTerm, and scrolling in Claude Code. Use when asked how to split, switch panes or tabs, scroll without a mouse, or exit herdr back to a normal shell.
 ---
 
 # Keys
@@ -29,6 +29,18 @@ herdr prefix is `Ctrl+B`. Press it, release, then the next key.
 | Previous / next | `Ctrl+B p` / `Ctrl+B n` |
 | Jump to tab 1-9 | `Ctrl+B 1` .. `Ctrl+B 9` |
 | Close tab | `Ctrl+B &` |
+
+## Session
+
+| Action | Key |
+|---|---|
+| Detach, back to the plain shell | `Ctrl+B q` |
+
+Detaching leaves everything running in the background - panes, agents, any Claude
+session. Run `herdr` to come back.
+
+To actually stop it rather than detach: detach first, then `herdr server stop`.
+That kills the server and everything in it, so anything mid-run dies with it.
 
 ## Scrolling
 
