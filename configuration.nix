@@ -17,9 +17,13 @@
       AppleInterfaceStyle = "Dark";
       KeyRepeat = 2;          # fast key repeat
       InitialKeyRepeat = 15;  # short delay before repeat
-      _HIHideMenuBar = false; # keep the menu bar always visible
+      _HIHideMenuBar = false; # menu bar stays visible on the desktop
       AppleShowAllExtensions = true;
     };
+    # Hide the menu bar in full screen; moving the pointer to the top reveals it.
+    # nix-darwin has no typed option for this key, hence the raw write. Together
+    # with _HIHideMenuBar = false this is System Settings' "In Full Screen Only".
+    CustomUserPreferences.NSGlobalDomain.AppleMenuBarVisibleInFullscreen = false;
     dock.autohide = true;
     finder.FXPreferredViewStyle = "Nlsv";  # list view by default
     finder.CreateDesktop = true;           # keep icons on the Desktop

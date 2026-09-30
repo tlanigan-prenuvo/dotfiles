@@ -19,6 +19,7 @@ herdr prefix is `Ctrl+B`. Press it, release, then the next key.
 | Cycle panes | `Ctrl+B Tab` |
 | Zoom pane to full tab | `Ctrl+B z` |
 | Close pane | `Ctrl+B x` |
+| Rename pane | `Ctrl+B Shift+P` |
 | Resize (sticky mode, `Esc` exits) | `Ctrl+B r` |
 
 ## Tabs
@@ -29,6 +30,16 @@ herdr prefix is `Ctrl+B`. Press it, release, then the next key.
 | Previous / next | `Ctrl+B p` / `Ctrl+B n` |
 | Jump to tab 1-9 | `Ctrl+B 1` .. `Ctrl+B 9` |
 | Close tab | `Ctrl+B &` |
+| Rename tab | `Ctrl+B Shift+T` |
+
+## Workspaces
+
+| Action | Key |
+|---|---|
+| Rename workspace | `Ctrl+B Shift+W` |
+
+Renaming is worth doing: several workspaces opened from the same repo all get
+the same label, and the sidebar is the only place you tell them apart.
 
 ## Session
 

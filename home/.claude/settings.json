@@ -1,8 +1,9 @@
 {
+  "model": "opus[1m]",
   "statusLine": {
     "type": "command",
     "command": "$HOME/.dotfiles/home/.claude/statusline.sh"
   },
-  "theme": "dark-ansi",
-  "skipDangerousModePermissionPrompt": true
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "dark-ansi"
 }

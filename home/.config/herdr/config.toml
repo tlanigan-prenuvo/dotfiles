@@ -23,3 +23,7 @@ agent_panel_sort = "spaces"
 # Collapse to zero width rather than the compact status rail, so a collapsed
 # sidebar is unmistakable instead of looking like tiny agent icons.
 sidebar_collapsed_mode = "hidden"
+
+[theme]
+name = "gruvbox"
+auto_switch = false
