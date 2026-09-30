@@ -67,6 +67,11 @@ in
   # .claude/skills/synced and home-manager must not clobber it.
   home.file.".claude/skills/keys".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/skills/keys";
+  # Vendored copy of `herdr --skill`, which the binary serves on demand and is
+  # otherwise never in an agent's context. Regenerate after a herdr upgrade:
+  # herdr --skill > home/.claude/skills/herdr/SKILL.md
+  home.file.".claude/skills/herdr".source =
+    config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/.claude/skills/herdr";
 
   home.file.".claude/CLAUDE.md".source =
     config.lib.file.mkOutOfStoreSymlink "${dotfiles}/home/AGENTS.md";
