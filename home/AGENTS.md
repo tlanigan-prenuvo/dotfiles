@@ -9,6 +9,9 @@
 - Apply a high standard to engineering excellence: lint, test failures, and test flakiness.
   If you see one, even if it is not caused by what you are working on right now, still get it fixed.
 - Before using "dynamic workflows", "ultra code" or any harness feature that immediately spawns a large swarm of subagents, always explain the tradeoffs and ask the user for explicit approval.
+- Inside herdr (`HERDR_ENV=1`), isolated checkouts go through herdr so they appear in the sidebar:
+  `herdr worktree create --cwd <repo>`. Do not use `EnterWorktree` or subagent `isolation: "worktree"`;
+  herdr cannot see either. `~/prenuvo` holds repos but is not one, so `--cwd` must name the repo.
 
 ## Maintaining this file
 
