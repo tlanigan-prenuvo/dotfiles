@@ -1,7 +1,7 @@
 # global agent instructions
 
 - Never use the em dash "—". Use plain dash "-" instead
-- When writing commit messages, NEVER auto-add your agent name as co-author
+- NEVER add agent attribution anywhere: no co-author trailer in commit messages, no "Generated with" footer or signature in PR descriptions, issues, or comments
 - Never manually modify CHANGELOG.md files or any files that are marked as auto-generated
 - When making technical decisions, do not give much weight to development cost.
   Instead, prefer quality, simplicity, robustness, scalability, and long term maintainability.
@@ -10,8 +10,11 @@
   If you see one, even if it is not caused by what you are working on right now, still get it fixed.
 - Before using "dynamic workflows", "ultra code" or any harness feature that immediately spawns a large swarm of subagents, always explain the tradeoffs and ask the user for explicit approval.
 - Inside herdr (`HERDR_ENV=1`), isolated checkouts go through herdr so they appear in the sidebar:
-  `herdr worktree create --cwd <repo>`. Do not use `EnterWorktree` or subagent `isolation: "worktree"`;
-  herdr cannot see either. `~/prenuvo` holds repos but is not one, so `--cwd` must name the repo.
+  `herdr worktree create --cwd <repo> --label <repo>-<topic> --path ~/.herdr/worktrees/<repo>/<repo>-<topic>`.
+  Always pass `--label` and `--path`; without them herdr generates names like `worktree-green-cloud-784b`.
+  Prefix the repo, because one branch name can exist in several repos. Do not use `EnterWorktree` or
+  subagent `isolation: "worktree"`; herdr cannot see either. `~/prenuvo` holds repos but is not one, so
+  `--cwd` must name the repo.
 
 ## Maintaining this file
 
